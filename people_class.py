@@ -1,7 +1,5 @@
 import config
-import time
-import os
-from board_class import *
+
 class People():
 	def __init__(self,ch=[]):
 		self.type = 'Lmao'
@@ -30,13 +28,11 @@ class People():
 						else:
 							self.distanceFromStart += 1
 
-
-
 class Mario(People):
 	def __init__(self):
 		People.__init__(self,config._mario)
-		self.score = 0
-		self.life = 1
+		self.score = 5
+		self.alive = 1
 
 	def gravity(self,mat):
 		if(mat[self.y + 3][self.x] == ' '):
@@ -64,6 +60,23 @@ class Mario(People):
 
 		self.jumping = 0
 
+class Enemy(People):
+	def __init__(self):
+		People.__init__(self,config._enemy)
+		self.steps = 0
+		self.moving_left = 0
+
+	def oscillate(self):
+		if(self.steps < 10):
+			self.distanceFromStart -= 1
+			self.steps += 1
+		elif(self.steps < 20):
+			self.ch = config._enemy2
+			self.distanceFromStart += 1
+			self.steps += 1
+		else:
+			self.steps = 0
+			self.ch = config._enemy
 
 
 
