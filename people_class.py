@@ -9,6 +9,7 @@ class People():
 		self.distanceFromStart = 50
 		self.in_air = 0
 		self.jumping = 0
+		self.alive = 1
 		#keep track how long Mario has been airborne
 		self.frames_in_air = 1
 
@@ -32,7 +33,6 @@ class Mario(People):
 	def __init__(self):
 		People.__init__(self,config._mario)
 		self.score = 5
-		self.alive = 1
 
 	def gravity(self,mat):
 		if(mat[self.y + 3][self.x] == ' '):
@@ -67,10 +67,10 @@ class Enemy(People):
 		self.moving_left = 0
 
 	def oscillate(self):
-		if(self.steps < 10):
+		if(self.steps < 20):
 			self.distanceFromStart -= 1
 			self.steps += 1
-		elif(self.steps < 20):
+		elif(self.steps < 40):
 			self.ch = config._enemy2
 			self.distanceFromStart += 1
 			self.steps += 1

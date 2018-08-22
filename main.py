@@ -1,4 +1,4 @@
-import os
+from os import system
 import time
 from init import *
 
@@ -7,19 +7,27 @@ while True:
 	inp = input_to(getch)
 	if(inp == 'q' or M.alive == 0):
 		break
-	os.system('clear')
+	# os.system('clear')
+	system('clear')
+
 	for i in config._list_of_enemies:
 		if(M.distanceFromStart + 40 == i):
+			E.alive = 1
+			E.steps = 0
+			E.ch = config._enemy 
 			E.distanceFromStart = i
 			config._list_of_enemies.remove(i)
-	E.oscillate()
-	if(E.distanceFromStart == M.distanceFromStart + M.x - 50 + 3
-	 and abs(E.y - M.y) < 4):
-		M.alive = 0
-	elif(E.distanceFromStart + 3 == M.distanceFromStart + M.x - 50 
-		and abs(E.y - M.y) < 4):
-		M.alive = 0
+	
+	if(E.alive == 1):
+		E.oscillate()
+	if(abs(E.distanceFromStart - (M.distanceFromStart + M.x - 50)) < 5):
+		if(M.y + 4 == E.y and not(M.jumping)):
+			M.score += 1
+			E.ch = config._enemy_empty
+			E.alive = 0
 
+		elif(abs(M.y - E.y) < 3 and E.alive == 1):
+			M.alive = 0
 
 	mat = bd.return_frame(M,E)
 	M.move(inp,mat)
@@ -32,9 +40,9 @@ while True:
 	else:
 		M.gravity(mat)
 
-	print(return_string_from_frame(mat))
+	print(return_string_from_frame(mat)+str(M.distanceFromStart)+'\n')
 
-	time.sleep(0.015)
+	time.sleep(0.009)
 	# time.sleep(0.2)
 
 

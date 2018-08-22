@@ -1,5 +1,6 @@
 import random
 import config
+from colorama import Back
 
 #main board class
 class Board:
@@ -23,23 +24,24 @@ class Board:
 
 		#making platforms
 		for cord in self.listOfBRicks:
-			rand_x = random.randint(8,14)
-			rand_y = random.randint(2,3)
-			for i in range(self.height - 11 - rand_y,self.height - 11):
+			p = random.randint(0,3)
+			rand_x = config._list_of_brickLengths[p]			
+			for i in range(self.height - 11 - 2,self.height - 11):
 				for j in range(cord,cord + rand_x):
-					self.full_matrix[i][j] = '*'
+					self.full_matrix[i][j] = config._brick[(j - cord)%2]
 
 		#making clouds
-		for k in range(25,500,105):
-			for i in range(2,len(config._clouds) + 2):
+		for k in range(25,450,110):
+			for i in range(3,len(config._clouds) + 3):
 				for j in range(len(config._clouds[0])):
-					self.full_matrix[i][k+j] = config._clouds[i - 2][j]
+					self.full_matrix[i][k+j] = config._clouds[i - 3][j]
 
 		#making pipes
-		for i in config._list_of_pipes:
+		for i in config._list_of_enemies:
 			for y in range(len(config._pipe)):
 				for x in range(len(config._pipe[0])):
-					self.full_matrix[y + self.height - 4 - len(config._pipe)][x + i] = config._pipe[y][x]
+					self.full_matrix[y + self.height - 4 - len(config._pipe)][x + i - 27] = config._pipe[y][x]
+					self.full_matrix[y + self.height - 4 - len(config._pipe)][x + i + 4] = config._pipe[y][x]
 
 	#return a matrix of size 42 * 100, with mario.distanceFromStart as mid pointer
 	def return_frame(self,mario,enem):
@@ -75,7 +77,6 @@ def return_string_from_frame(mat):
 	stringBd += "Quitting is for losers you wimp\n"
 
 	return stringBd
-
 
 
 
