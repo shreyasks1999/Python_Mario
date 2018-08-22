@@ -1,6 +1,6 @@
 import random
-import config
 from colorama import Back
+import config
 
 #main board class
 class Board:
