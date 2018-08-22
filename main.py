@@ -1,5 +1,6 @@
 from os import system
 import time
+import sys
 from init import *
 
 #the main game loop
@@ -8,7 +9,11 @@ while True:
 	if(inp == 'q' or M.alive == 0):
 		break
 	# os.system('clear')
-	system('clear')
+	sys.stdout.flush()
+	try:
+		system('clear')
+	except: BaseException:
+		system('cls')
 
 	for i in config._list_of_enemies:
 		if(M.distanceFromStart + 40 == i):
