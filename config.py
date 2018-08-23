@@ -11,7 +11,7 @@ for i in range(len(temp)):
 	for j in range(len(temp[0])):
 		_mario[i].append(Fore.GREEN + temp[i][j] + Fore.RESET)
 
-temp = [['<','(','o',')'],
+temp =   [['<','(','o',')'],
 		  [' ','(',' ',')'],
 		  [' ','/',' ','\\']]
 
@@ -22,7 +22,7 @@ for i in range(len(temp)):
 		_enemy[i].append(Fore.RED + temp[i][j] + Fore.RESET)
 
 
-temp = [['(','o',')','>'],
+temp = 	  [['(','o',')','>'],
 		   ['(',' ',')',' '],
 		   ['/',' ','\\',' ']]
 
@@ -34,11 +34,25 @@ for i in range(len(temp)):
 
 _enemy_empty = [[' ',' ',' ',' '],
 				[' ',' ',' ',' '],
-				[' ',' ',' ',' '],
 				[' ',' ',' ',' ']]
 
 
 
+temp = 		   ["/\/\/\/\/\/\/\\",
+				"  _/ \_/ \_   ",
+				"  \|0   0|/   ",
+				" _(_  ^  _)_  ",
+				"/`\|V***V|/`\ ",
+				"\  \_____/  / ",
+				"/\   )=(   /\ ",
+				"/ \_/\=/\_/  \\"]
+
+
+_boss_enemy = []
+for i in range(len(temp)):
+	_boss_enemy.append([])
+	for j in range(len(temp[0])):
+		_boss_enemy[i].append(Fore.RED + temp[i][j] + Fore.RESET)
 
 
 
@@ -86,26 +100,4 @@ for i in range(len(temp)):
 
 
 
-temp =		["  ▒▒▒▒▒      ",
-			 "  ▒▒▒▒▒▒▒▒▒  ",
-			 "  ▓▓▓░░▓░    ",
-			 " ▓░▓░░░▓░░░  ",
-			 " ▓░▓▓░░░▓░░░ ",
-			 " ▓▓░░░░▓▓▓▓  ",
-			 "  ░░░░░░░░   ",
-			 "  ▓▓▒▓▓▓▒▓▓  ",
-			 " ▓▓▓▒▓▓▓▒▓▓▓ ",
-			 "▓▓▓▓▒▒▒▒▒▓▓▓▓",
-			 "░░▓▒░▒▒▒░▒▓░░",
-			 "░░░▒▒▒▒▒▒▒░░░",
-			 "░░▒▒▒▒▒▒▒▒▒░░",
-			 "  ▒▒▒   ▒▒▒  ",
-			 "▓▓▓    ▓▓▓   ",
-			 "▓▓▓▓    ▓▓▓▓ "]
-
-_large_mario = []
-for i in range(len(temp)):
-	_large_mario.append([])
-	for j in range(len(temp[0])):
-		_large_mario[i].append(temp[i][j])
 
