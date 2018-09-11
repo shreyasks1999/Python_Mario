@@ -1,5 +1,5 @@
-#large mario
 from colorama import Fore,Back
+
 #player mario
 temp  = [['(','o','o',')'],
 		  ['/','M','M','\\'],
@@ -11,6 +11,7 @@ for i in range(len(temp)):
 	for j in range(len(temp[0])):
 		_mario[i].append(Fore.GREEN + temp[i][j] + Fore.RESET)
 
+#enemy facing left
 temp =   [['<','(','o',')'],
 		  [' ','(',' ',')'],
 		  [' ','/',' ','\\']]
@@ -22,6 +23,7 @@ for i in range(len(temp)):
 		_enemy[i].append(Fore.RED + temp[i][j] + Fore.RESET)
 
 
+#enemy facing right
 temp = 	  [['(','o',')','>'],
 		   ['(',' ',')',' '],
 		   ['/',' ','\\',' ']]
@@ -37,7 +39,7 @@ _enemy_empty = [[' ',' ',' ',' '],
 				[' ',' ',' ',' ']]
 
 
-
+#BOSS villian
 temp = 		   ["/\/\/\/\/\/\/\\",
 				"  _/ \_/ \_   ",
 				"  \|0   0|/   ",
@@ -60,14 +62,12 @@ for i in range(len(temp)):
 #board related info
 _brick = [Fore.YELLOW + '[' + Fore.RESET,Fore.YELLOW + ']' + Fore.RESET]
 _list_of_bricks = [10,93,145,185,231,290,334,391,430,474,480]
-# _list_of_pipes = [52,75,120,190,302,399,]
-_list_of_pipes = [53 - 10,74,155 - 7 - 10,169,270 - 7 - 10,284,375 - 7 - 10,389]
 _list_of_enemies = [70,165,280,385]
 _list_of_brickLengths = [10,12,14,16,18]
 
 
 
-
+#clouds
 temp = 	   ["          .-~~~-..-~~~-..-~~~-..-~~~-.            ", 
 			"  .- ~ ~-(////////////////////////////)____       ",
 			" ///////////////////////////////////////////~ -.  ",
@@ -86,6 +86,7 @@ for i in range(len(temp)):
 	for j in range(len(temp[0])):
 		_clouds[i].append(Fore.BLUE + temp[i][j] + Fore.RESET)
 
+#pipes
 temp = ["[#####]",
 		"[#####]",
 		"[#####]",

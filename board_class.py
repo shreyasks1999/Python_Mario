@@ -48,35 +48,29 @@ class Board:
 					self.full_matrix[y + self.height - 4 - len(config._pipe)][x + i - 27] = config._pipe[y][x]
 					self.full_matrix[y + self.height - 4 - len(config._pipe)][x + i + 4] = config._pipe[y][x]
 
-
-	# def board_boss(self):
-		
-
-
-
-
-
-
-
-
 	#return a matrix of size 42 * 100, with mario.distanceFromStart as mid pointer
 	def return_frame(self,mario,enem):
 		xRef = mario.distanceFromStart
 		mat = []
+
+		#put enemy on board
 		if(enem is not None):
 			for y in range(len(enem.ch)):
 				for x in range(len(enem.ch[0])):
 					self.full_matrix[enem.y + y][(enem.distanceFromStart + x)%self.width] = enem.ch[y][x]
 
+		#splice the board
 		for i in range(self.height):
 			mat.append([])
 			for j in range(xRef - 50,xRef + 50):
 				mat[i].append(self.full_matrix[i][j%self.width])
 
+		#put mario on board
 		for i in range(mario.y,mario.y + 3):
 			for j in range(mario.x,mario.x + 4):
 				mat[i][j] = mario.ch[i - mario.y][j - mario.x]
 
+		#erase enemy from original board
 		if(enem is not None):
 			for y in range(len(enem.ch)):
 				for x in range(len(enem.ch[0])):
